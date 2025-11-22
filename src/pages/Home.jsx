@@ -10,7 +10,7 @@ const Home = () => {
      <Text title={"Joggings pour enfants"} subtitle={"très bonne qualité, toutes les tailles"}/>
 
      {/* formulaire et image containers */}
-     <div className=" mt-5 flex max-sm:flex-col gap-5">
+     <div className=" mt-5 flex max-sm:flex-col-reverse gap-5">
       <Formulaire />
       <ImageDetails />
      </div>

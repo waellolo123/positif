@@ -40,7 +40,7 @@ const Formulaire = () => {
          <span className="text-purple text-xl max-sm:text-sm font-bold">55, 900dt</span>
         </div>
         {/* ****************************************************************** */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
           <div className="flex items-center gap-2">
            <TbTruckDelivery className="size-6 max-sm:size-4 text-purple"/>
            <span className="text-purple max-sm:text-xs">Livraison Gratuite</span>
@@ -53,7 +53,42 @@ const Formulaire = () => {
         <TbHandClick className="size-8 text-purple"/>
       </div>
 
+     {/* formulaire */}
+      <div className="mt-10 p-5 border border-purple">
 
+      {/* section prix */}
+      <div className="">
+       <div className="flex items-center justify-between">
+        <span className="text-lg text-purple font-semibold">Quantité: 2</span>
+        <span className="text-lg text-purple font-semibold">55.900 dt</span>
+       </div>
+       <hr className="my-3 border-purple"/>
+        <div className="flex items-center justify-between">
+        <span className="text-lg text-purple font-semibold">Livraison</span>
+        <span className="text-lg text-purple font-semibold">7.000 dt</span>
+       </div>
+      </div>
+
+      {/* section formulaire */}
+       <form action="" className="mt-10">
+        <div className="flex items-center justify-between gap-4">
+         <input type="text" placeholder="Nom" className="p-4 border border-purple w-full"/>
+         <input type="text" placeholder="Prénom" className="p-4 border border-purple w-full"/>
+        </div>
+         <input type="text" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="text" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="text" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
+         <textarea rows={4} type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
+       </form>
+
+       <button className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
+        Je valide ma commande
+        <TbHandClick className="size-8 text-white"/>
+       </button>
+
+
+      </div>
+    
 
 
     </div>
