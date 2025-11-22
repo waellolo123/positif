@@ -40,7 +40,7 @@ const Formulaire = () => {
          <span className="text-purple text-xl max-sm:text-sm font-bold">55, 900dt</span>
         </div>
         {/* ****************************************************************** */}
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center animate-bounce">
           <div className="flex items-center gap-2">
            <TbTruckDelivery className="size-6 max-sm:size-4 text-purple"/>
            <span className="text-purple max-sm:text-xs">Livraison Gratuite</span>

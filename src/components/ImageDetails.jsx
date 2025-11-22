@@ -64,7 +64,7 @@ const ImageDetails = () => {
         
       <Text title={"Description"} subtitle={"Détails et fiche technique du produit"}/> 
       {/* description */}
-        <p className="w-full text-slate-800">Nos joggings pour enfants allient confort, résistance et style. 
+        <p className="w-full text-gray">Nos joggings pour enfants allient confort, résistance et style. 
         Confectionnés dans des tissus doux et respirants, ils offrent une liberté 
         de mouvement idéale pour le quotidien, l’école ou les activités sportives. 
         Grâce à des finitions solides et des matières durables, ils résistent aux 
