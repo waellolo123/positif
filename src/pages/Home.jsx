@@ -9,8 +9,8 @@ import child4 from "../assets/child4.jpeg";
 
 const Home = () => {
   return (
-    <div className=" h-[500vh] px-2 lg:px-10 md:px-20 mx-auto">
-     <img src={backgr} className="opacity-20 -z-1 absolute top-0 left-0 right-0"/>
+    <div className="px-2 lg:px-10 md:px-20 mx-auto">
+     <img src={backgr} className="opacity-20 -z-1 absolute top-0 left-0 right-0 w-full h-full"/>
      <Text title={"Joggings pour enfants"} subtitle={"très bonne qualité, toutes les tailles"}/>
 
      {/* formulaire et image containers */}
