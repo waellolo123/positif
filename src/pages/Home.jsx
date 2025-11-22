@@ -11,16 +11,19 @@ const Home = () => {
 
      {/* formulaire et image containers */}
      <div className=" mt-5 flex max-sm:flex-col-reverse gap-5">
-      <Formulaire />
+      <Formulaire/>
       <ImageDetails />
      </div>
      
      {/* section 3 */}
      <div className="">
       <Text title={"Confortables et Pratiques"} subtitle={"toute une gamme de qualité supérieure"}/>
-      <p className="text-gray">
+      <p className="mt-2 text-gray w-[80%] max-sm:w-full">
        Nos joggings pour enfants allient confort, résistance et style. Confectionnés dans des tissus doux et respirants, ils offrent une liberté de mouvement idéale pour le quotidien, l’école ou les activités sportives. Grâce à des finitions solides et des matières durables, ils résistent aux lavages fréquents tout en gardant leurs couleurs éclatantes. Pratiques et modernes, nos joggings assurent aux enfants un look tendance et une aisance incomparable, jour après jour. 
       </p>
+      <div className="">
+
+      </div>
      </div>
 
     </div>

@@ -51,26 +51,26 @@ const ImageDetails = () => {
        <span className="bg-amber-500 px-2 py-1 font-bold text-purple">6 ans</span> 
       </div>
 
-      <Text title={"Couleurs"} subtitle={"des couleurs et modèles variés"}/> 
+      {/* <Text title={"Couleurs"} subtitle={"des couleurs et modèles variés"}/>  */}
 
       {/* couleurs  */}
-      <div className="mt-3 flex gap-2">
+      {/* <div className="mt-3 flex gap-2">
        <div className="w-[50px] h-[50px] bg-[#E1826C] "></div> 
        <div className="w-[50px] h-[50px] bg-[#434343] "></div> 
        <div className="w-[50px] h-[50px] bg-[#E19D0E] "></div> 
        <div className="w-[50px] h-[50px] bg-[#77A66C] "></div> 
        <div className="w-[50px] h-[50px] bg-[#6E0E10] "></div> 
-      </div>
+      </div> */}
         
-      <Text title={"Description"} subtitle={"Détails et fiche technique du produit"}/> 
+      {/* <Text title={"Description"} subtitle={"Détails et fiche technique du produit"}/>  */}
       {/* description */}
-        <p className="w-full text-gray">Nos joggings pour enfants allient confort, résistance et style. 
+        {/* <p className="w-full text-gray">Nos joggings pour enfants allient confort, résistance et style. 
         Confectionnés dans des tissus doux et respirants, ils offrent une liberté 
         de mouvement idéale pour le quotidien, l’école ou les activités sportives. 
         Grâce à des finitions solides et des matières durables, ils résistent aux 
         lavages fréquents tout en gardant leurs couleurs éclatantes. Pratiques 
         et modernes, nos joggings assurent aux enfants un look tendance et 
-        une aisance incomparable, jour après jour.</p>
+        une aisance incomparable, jour après jour.</p> */}
 
 
 
