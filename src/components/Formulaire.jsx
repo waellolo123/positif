@@ -28,13 +28,6 @@ const Formulaire = () => {
       2: { label: "2 pièces", prix: 57.9 },
       3: { label: "3 pièces", prix: 79.9 },
     };
-    
-    
-    if (state.succeeded) {
-     return <p>Merci pour votre confiance, on vous contactera pour confirmer l'achate!</p>;
-  }
-
-
 
   const handleSelect = (offer) => {
     setSelectedOffer(offer);
@@ -225,20 +218,26 @@ const Formulaire = () => {
 
 
         <div className="mt-10 flex items-center justify-between gap-4">
+
+          <input type="hidden" name="Résumé de commande" value="2 pièces, 57.900 dt + 7dt livraison" />
+          <input type="hidden" name="Pièce 1" value="Taille : non choisie, Modèle : non choisi" />
+          <input type="hidden" name="Pièce 2" value="Taille : non choisie, Modèle : non choisi" />
+
          <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full"/>
          <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full"/>
         </div>
          <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
          <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
          <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
-           <ValidationError prefix="Email" field="email" errors={state.errors}/>
+         <ValidationError prefix="Email" field="email" errors={state.errors} />
          <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
+         <ValidationError prefix="Message" field="message" errors={state.errors} />
        </form>
 
        <button 
        type="submit" disabled={state.submitting}
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
-        Je valide ma commande
+        {state.submitting ? "Envoi de votre commande..." : "Je valide ma commande"}
         <TbHandClick className="size-8 text-white"/>
        </button>
 
