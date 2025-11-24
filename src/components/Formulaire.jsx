@@ -225,13 +225,14 @@ const Formulaire = () => {
 
 
         <div className="mt-10 flex items-center justify-between gap-4">
-         <input type="text" name="nom" placeholder="Nom" className="p-4 border border-purple w-full"/>
-         <input type="text" name="prenom" placeholder="Prénom" className="p-4 border border-purple w-full"/>
+         <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full"/>
+         <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full"/>
         </div>
-         <input type="tel" name="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
-         <input type="text" name="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
-         <input type="email" name="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
-         <textarea rows={4} name="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
+         <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
+           <ValidationError prefix="Email" field="email" errors={state.errors}/>
+         <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
        </form>
 
        <button 
