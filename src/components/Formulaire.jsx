@@ -2,11 +2,18 @@ import { FaArrowRight } from "react-icons/fa";
 import { TbHandClick } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useState } from "react";
+import { useForm, ValidationError } from '@formspree/react';
 
 
 const Formulaire = () => {
 
+  const [state, handleSubmit] = useForm("mkgagyna");
+  const [selectedOffer, setSelectedOffer] = useState(null);
+  const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
 
+     if (state.succeeded) {
+      return <p>Merci pour votre confiance, on vous contactera pour confirmer l'achate!</p>;
+  }
 
      const tailles = ["6 mois", "1 ans", "2 ans", "4 ans", "6 ans"];
 
@@ -29,8 +36,6 @@ const Formulaire = () => {
 
 
 
-  const [selectedOffer, setSelectedOffer] = useState(null);
-  const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
 
   const handleSelect = (offer) => {
     setSelectedOffer(offer);
@@ -199,7 +204,7 @@ const Formulaire = () => {
 
       {/* section formulaire */}
        <form 
-          action="https://formspree.io/f/mkgagyna" method="POST" 
+          onSubmit={handleSubmit} 
           className="mt-10">
 
 
@@ -231,7 +236,7 @@ const Formulaire = () => {
        </form>
 
        <button 
-       type="submit"
+       type="submit" disabled={state.submitting}
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
         Je valide ma commande
         <TbHandClick className="size-8 text-white"/>
