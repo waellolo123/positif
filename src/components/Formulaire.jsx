@@ -2,7 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { TbHandClick } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useState } from "react";
-
+import { useForm, ValidationError } from '@formspree/react';
 
 
 const Formulaire = () => {
@@ -11,6 +11,7 @@ const Formulaire = () => {
   const [result, setResult] = useState("");
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
+  const [state, handleSubmit] = useForm("mkgagyna");
 
   const tailles = ["6 mois", "1 ans", "2 ans", "4 ans", "6 ans"];
   
@@ -54,34 +55,6 @@ const Formulaire = () => {
     setChoix({ ...choix, modeles: newModeles });
   };
  
-
-
-
-     const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
-
-    formData.append("access_key", "1a88c807-6657-49dc-9db5-d3fd88af86e6");
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
-  };
-   
-
-  
 
   return (
 
@@ -225,7 +198,7 @@ const Formulaire = () => {
       {/* section formulaire */}
        <form 
           // onSubmit={handleSubmit} 
-           onSubmit={onSubmit}
+           onSubmit={handleSubmit}
           className="mt-10">
 
 
@@ -248,26 +221,27 @@ const Formulaire = () => {
 
         <div className="mt-10 flex items-center justify-between gap-4">
 
-          <input type="hidden" name="Résumé de commande" value="2 pièces, 57.900 dt + 7dt livraison" />
-          <input type="hidden" name="Pièce 1" value="Taille : non choisie, Modèle : non choisi" />
-          <input type="hidden" name="Pièce 2" value="Taille : non choisie, Modèle : non choisi" />
+          <input type="hidden" name="Résumé de commande" value="2 pièces, 57.900 dt + 7dt livraison"  required/>
+          <input type="hidden" name="Pièce 1" value="Taille : non choisie, Modèle : non choisi"  required/>
+          <input type="hidden" name="Pièce 2" value="Taille : non choisie, Modèle : non choisi"  required/>
 
-         <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full"/>
-         <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full"/>
+         <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full" required/>
+         <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full" required/>
         </div>
-         <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
-         <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full" required/>
+         <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full" required/>
          <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
 
-         <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
+         <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full" required/>
        <button 
        type="submit"
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
-        Je valide ma commande
+         {state.submitting ? "Envoi de Votre commande..." : "Je valide ma commande"}
         <TbHandClick className="size-8 text-white"/>
-        <span>{result}</span>
        </button>
-
+       {state.succeeded && (
+        <p className="text-xs mt-2 text-center text-green-500 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
+        )}
        </form>
  
 
