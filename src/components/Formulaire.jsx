@@ -233,15 +233,15 @@ const Formulaire = () => {
          <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
 
          <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full" required/>
+         {state.succeeded && (
+           <p className="text-xs mt-2 text-center text-green-700 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
+          )}
        <button 
        type="submit"
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
          {state.submitting ? "Envoi de Votre commande..." : "Je valide ma commande"}
         <TbHandClick className="size-8 text-white"/>
        </button>
-       {state.succeeded && (
-        <p className="text-xs mt-2 text-center text-green-700 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
-        )}
        </form>
  
 
