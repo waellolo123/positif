@@ -2,12 +2,13 @@ import { FaArrowRight } from "react-icons/fa";
 import { TbHandClick } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useState } from "react";
-import { useForm, ValidationError } from '@formspree/react';
+
 
 
 const Formulaire = () => {
 
-  const [state, handleSubmit] = useForm("mkgagyna");
+
+  const [result, setResult] = useState("");
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
 
@@ -28,6 +29,8 @@ const Formulaire = () => {
       2: { label: "2 pièces", prix: 57.9 },
       3: { label: "3 pièces", prix: 79.9 },
     };
+
+    // const access_key = "1a88c807-6657-49dc-9db5-d3fd88af86e6";
 
   const handleSelect = (offer) => {
     setSelectedOffer(offer);
@@ -52,6 +55,31 @@ const Formulaire = () => {
   };
  
 
+
+
+     const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "1a88c807-6657-49dc-9db5-d3fd88af86e6");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+   
 
   
 
@@ -196,7 +224,8 @@ const Formulaire = () => {
 
       {/* section formulaire */}
        <form 
-          onSubmit={handleSubmit} 
+          // onSubmit={handleSubmit} 
+           onSubmit={onSubmit}
           className="mt-10">
 
 
@@ -229,17 +258,18 @@ const Formulaire = () => {
          <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
          <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
          <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
-         <ValidationError prefix="Email" field="email" errors={state.errors} />
-         <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
-         <ValidationError prefix="Message" field="message" errors={state.errors} />
-       </form>
 
+         <textarea rows={4} name="message" id="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
        <button 
-       type="submit" disabled={state.submitting}
+       type="submit"
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
-        {state.submitting ? "Envoi de votre commande..." : "Je valide ma commande"}
+        Je valide ma commande
         <TbHandClick className="size-8 text-white"/>
+        <span>{result}</span>
        </button>
+
+       </form>
+ 
 
 
       </div>
