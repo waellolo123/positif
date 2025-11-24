@@ -240,7 +240,7 @@ const Formulaire = () => {
         <TbHandClick className="size-8 text-white"/>
        </button>
        {state.succeeded && (
-        <p className="text-xs mt-2 text-center text-green-500 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
+        <p className="text-xs mt-2 text-center text-green-700 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
         )}
        </form>
  
