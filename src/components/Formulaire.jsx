@@ -74,7 +74,7 @@ const Formulaire = () => {
           >
             {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt 
             <span className="animate-bounce text-amber-500 flex items-center gap-2">
-            {n === 3 &&  <TbTruckDelivery className="size-6 max-sm:size-4 text-amber-500"/>}
+            {n === 3 &&  <TbTruckDelivery className="size-6 text-amber-500"/>}
               {n === 3 && "Livraison gratuite"}
               </span>
             <TbHandClick className="size-8 text-white"/>
@@ -93,16 +93,16 @@ const Formulaire = () => {
         <div className="space-y-4">
           {[...Array(selectedOffer)].map((_, i) => (
             <div key={i} className="border p-4 rounded bg-gray-50">
-              <h3 className="font-semibold mb-2">Pièce {i + 1}</h3>
+              <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
 
               {/* Taille */}
               <select
-                className="border p-2 rounded w-48 mb-2"
+                className="border p-2 rounded w-48 mb-2 bg-purple text-white"
                 onChange={(e) => updateTaille(i, e.target.value)}
               >
-                <option value="">Choisir une taille</option>
+                <option value="" className="text-white">Choisir une taille</option>
                 {tailles.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+                  <option className="text-white" key={t} value={t}>{t}</option>
                 ))}
               </select>
 
@@ -112,12 +112,12 @@ const Formulaire = () => {
                   <button
                     key={m.id}
                     onClick={() => updateModele(i, m.name)}
-                    className={`border rounded p-1 ${
-                      choix.modeles[i] === m.name ? "ring-2 ring-blue-500" : ""
+                    className={`border border-purple rounded p-1 ${
+                      choix.modeles[i] === m.name ? "ring-2 ring-amber-500" : ""
                     }`}
                   >
                     <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
-                    <p className="text-xs text-center">{m.name}</p>
+                    <p className="text-xs font-medium text-center text-purple">{m.name}</p>
                   </button>
                 ))}
               </div>
@@ -202,14 +202,14 @@ const Formulaire = () => {
 
                  {/* Formulaire récapitulatif */}
       {choix.quantite > 0 && (
-        <div className="mt-6 p-4 border rounded bg-white shadow">
-          <h2 className="font-bold mb-4">🧾 Récapitulatif de commande</h2>
-          <p><strong>Quantité :</strong> {choix.quantite}</p>
-          <p><strong>Prix total :</strong> {choix.prix.toFixed(3)} dt {choix.prix === 79.900 ? "Livraison gratuite" : "+ 7dt livraison"}</p>
+        <div className="mt-6 p-4 border border-purple rounded bg-white shadow">
+          <h2 className="font-bold mb-4 text-purple">Récapitulatif de commande</h2>
+          <p className="text-purple font-medium"><strong className="text-slate-700">Quantité :</strong> {choix.quantite}</p>
+          <p className="text-purple font-medium"><strong className="text-slate-700">Prix total :</strong> {choix.prix.toFixed(3)} dt {choix.prix === 79.900 ? "Livraison gratuite" : "+ 7dt livraison"}</p>
           <div className="mt-2 space-y-2">
             {choix.tailles.map((t, i) => (
               <div key={i}>
-                <p>Pièce {i + 1} → Taille : {t || "non choisie"}, Modèle : {choix.modeles[i] || "non choisi"}</p>
+                <p className="text-purple font-medium">Pièce {i + 1} → Taille : {t || "non choisie"}, Modèle : {choix.modeles[i] || "non choisi"}</p>
               </div>
             ))}
           </div>
