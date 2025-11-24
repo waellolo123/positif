@@ -73,14 +73,16 @@ const Formulaire = () => {
 
     <div className="flex-1">
      <p className="text-amber-500 font-semibold">Choisissez la formule qui vout convient si dessous</p>
+
+
       {/*buttons  */}
 
       <div className="w-full p-5 max-sm:p-2  mt-5 flex flex-col justify-center items-center bg-slate-100">
         {[1, 2, 3].map((n) => (
           <button
             key={n}
-            className={`w-full p-5 max-sm:p-2  mt-5 flex items-center justify-center gap-3 text-white font-semibold bg-gradient-to-r from-purple to-saumon cursor-pointer ${
-              selectedOffer === n ? "bg-blue-700" : "bg-blue-500"
+            className={`w-full p-5 max-sm:p-2  mt-5 flex items-center justify-center gap-3  font-semibold cursor-pointer ${
+              selectedOffer === n ? "bg-white border border-purple text-purple text-2xl animate-pulse" : "bg-gradient-to-r from-purple to-saumon text-white"
             }`}
             onClick={() => handleSelect(n)}
           >
@@ -89,7 +91,7 @@ const Formulaire = () => {
             {n === 3 &&  <TbTruckDelivery className="size-6 text-amber-500"/>}
               {n === 3 && "Livraison gratuite"}
               </span>
-            <TbHandClick className="size-8 text-white"/>
+            <TbHandClick className="size-8"/>
           </button>
         ))}
         
@@ -212,12 +214,15 @@ const Formulaire = () => {
        <form 
           // onSubmit={handleSubmit} 
            onSubmit={handleSubmit}
-          className="mt-10">
+          className="mt-5">
 
 
-                 {/* Formulaire récapitulatif */}
+      {/* Formulaire récapitulatif */}
+
+        <p className="text-red-700 bg-red-100 p-2 text-center font-medium">il faut que vous choizissez les tailles et les modèles</p> 
+
       {choix.quantite > 0 && (
-        <div className="mt-6 p-4 border border-purple rounded bg-white shadow">
+        <div className="mt-2 p-4 border border-purple rounded bg-white shadow">
           <h2 className="font-bold mb-4 text-purple">Récapitulatif de commande</h2>
           <p className="text-purple font-medium"><strong className="text-slate-700">Quantité :</strong> {choix.quantite}</p>
           <p className="text-purple font-medium"><strong className="text-slate-700">Prix total :</strong> {choix.prix.toFixed(3)} dt {choix.prix === 79.900 ? "Livraison gratuite" : "+ 7dt livraison"}</p>
