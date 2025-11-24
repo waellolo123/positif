@@ -59,7 +59,7 @@ const Formulaire = () => {
   
 
   return (
-    
+
     <div className="flex-1">
      <p className="text-amber-500 font-semibold">Choisissez la formule qui vout convient si dessous</p>
       {/*buttons  */}
@@ -198,7 +198,9 @@ const Formulaire = () => {
       </div> */}
 
       {/* section formulaire */}
-       <form action="" className="mt-10">
+       <form 
+          action="https://formspree.io/f/mkgagyna" method="POST" 
+          className="mt-10">
 
 
                  {/* Formulaire récapitulatif */}
@@ -229,7 +231,7 @@ const Formulaire = () => {
        </form>
 
        <button 
-       
+       type="submit"
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
         Je valide ma commande
         <TbHandClick className="size-8 text-white"/>
