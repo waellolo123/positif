@@ -1,14 +1,24 @@
-import jog1 from "../assets/jog1_clean.png";
-import jog2 from "../assets/jog2_clean.png";
-import jog3 from "../assets/jog3_clean.png";
-import jog4 from "../assets/jog4_clean.png";
-import jog5 from "../assets/jog5_clean.png";
-import jog6 from "../assets/jog6_clean.png";
-import jog7 from "../assets/jog7_clean.png";
+import { useState } from "react";
 import Text from "./Text";
 
 
+
 const ImageDetails = () => {
+
+
+  
+  const models = [
+    { id: 1, name: "Modèle 1", src: "/jog1_clean.png" },
+      { id: 2, name: "Modèle 2", src: "/jog2_clean.png" },
+      { id: 3, name: "Modèle 3", src: "/jog3_clean.png" },
+      { id: 4, name: "Modèle 4", src: "/jog4_clean.png" },
+      { id: 5, name: "Modèle 5", src: "/jog5_clean.png" },
+      { id: 6, name: "Modèle 6", src: "/jog6_clean.png" },
+      { id: 7, name: "Modèle 7", src: "/jog7_clean.png" },
+    ];
+    
+    
+    const [selectedImage, setSelectedImage] = useState(models[0].src);
 
 
 
@@ -16,7 +26,9 @@ const ImageDetails = () => {
     <div className='flex-1'>
      {/* image container */}
       <div className="relative w-full h-[500px] bg-slate-100">
-        <img src={jog1} alt="" className="absolute w-[400px] inset-0 m-auto"/>
+
+          <img src={selectedImage} alt="" className="absolute w-[400px] inset-0 m-auto"/>
+
 
         <div className="bg-amber-500 flex flex-col items-center  px-6 py-1 absolute bottom-0 right-0">
          <span className="text-white line-through">32.000</span>
@@ -32,12 +44,20 @@ const ImageDetails = () => {
       </div>
       {/* images container */}
       <div className="mt-5 grid grid-cols-6 gap-2">
-       <img src={jog2} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
-       <img src={jog3} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
-       <img src={jog4} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
-       <img src={jog5} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
-       <img src={jog6} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
-       <img src={jog7} alt="" className="w-[110px] bg-slate-100 border-gray border-1"/> 
+         {models.map((model) => (
+          <img
+            key={model.id}
+            src={model.src}
+            alt={model.alt}
+            style={{
+              width: '80px',
+              cursor: 'pointer',
+              border: selectedImage === model.src ? '2px solid #67285f' : 'none',
+              borderRadius: '6px',
+            }}
+            onClick={() => setSelectedImage(model.src)}
+          />
+        ))}
       </div>
 
       <Text title={"Tailles disponibles"} subtitle={"toutes les tailles d'enfants"}/> 

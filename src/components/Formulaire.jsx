@@ -29,7 +29,7 @@ const Formulaire = () => {
 
 
 
-           const [selectedOffer, setSelectedOffer] = useState(null);
+  const [selectedOffer, setSelectedOffer] = useState(null);
   const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
 
   const handleSelect = (offer) => {
@@ -59,6 +59,7 @@ const Formulaire = () => {
   
 
   return (
+    
     <div className="flex-1">
      <p className="text-amber-500 font-semibold">Choisissez la formule qui vout convient si dessous</p>
       {/*buttons  */}
@@ -90,9 +91,9 @@ const Formulaire = () => {
       
       {/* Sélections dynamiques */}
       {selectedOffer && (
-        <div className="space-y-4">
+        <div className="space-y-4 mt-10">
           {[...Array(selectedOffer)].map((_, i) => (
-            <div key={i} className="border p-4 rounded bg-gray-50">
+            <div key={i} className="border border-purple p-4 rounded bg-gray-50">
               <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
 
               {/* Taille */}
@@ -227,7 +228,9 @@ const Formulaire = () => {
          <textarea rows={4} type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
        </form>
 
-       <button className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
+       <button 
+       
+       className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
         Je valide ma commande
         <TbHandClick className="size-8 text-white"/>
        </button>
