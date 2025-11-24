@@ -7,7 +7,11 @@ import child2 from "../assets/child2.jpeg";
 import child3 from "../assets/child3.jpeg";
 import child4 from "../assets/child4.jpeg";
 
+
+
 const Home = () => {
+
+
   return (
     <div className="px-2 lg:px-10 md:px-20 mx-auto">
      <img src={backgr} className="opacity-20 -z-1 absolute top-0 left-0 right-0 w-full h-full"/>
@@ -28,8 +32,8 @@ const Home = () => {
       <div className="flex gap-4 items-center justify-center mt-10 flex-wrap">
        <img src={child1} alt="" className="w-[300px] h-[400px] object-cover"/> 
        <img src={child2} alt="" className="w-[300px] h-[400px] object-cover"/> 
-       <img src={child3} alt="" className="w-[300px] h-[400px] object-cover"/> 
        <img src={child4} alt="" className="w-[300px] h-[400px] object-cover"/> 
+       <img src={child3} alt="" className="w-[300px] h-[400px] object-cover"/> 
       </div>
      </div>
 
