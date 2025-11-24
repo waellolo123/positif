@@ -11,13 +11,9 @@ const Formulaire = () => {
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
 
-     if (state.succeeded) {
-      return <p>Merci pour votre confiance, on vous contactera pour confirmer l'achate!</p>;
-  }
-
-     const tailles = ["6 mois", "1 ans", "2 ans", "4 ans", "6 ans"];
-
-    const modeles = [
+  const tailles = ["6 mois", "1 ans", "2 ans", "4 ans", "6 ans"];
+  
+  const modeles = [
       { id: 1, name: "Modèle 1", img: "/jog1_clean.png" },
       { id: 2, name: "Modèle 2", img: "/jog2_clean.png" },
       { id: 3, name: "Modèle 3", img: "/jog3_clean.png" },
@@ -32,8 +28,11 @@ const Formulaire = () => {
       2: { label: "2 pièces", prix: 57.9 },
       3: { label: "3 pièces", prix: 79.9 },
     };
-
-
+    
+    
+    if (state.succeeded) {
+     return <p>Merci pour votre confiance, on vous contactera pour confirmer l'achate!</p>;
+  }
 
 
 
@@ -226,13 +225,13 @@ const Formulaire = () => {
 
 
         <div className="mt-10 flex items-center justify-between gap-4">
-         <input type="text" placeholder="Nom" className="p-4 border border-purple w-full"/>
-         <input type="text" placeholder="Prénom" className="p-4 border border-purple w-full"/>
+         <input type="text" name="nom" placeholder="Nom" className="p-4 border border-purple w-full"/>
+         <input type="text" name="prenom" placeholder="Prénom" className="p-4 border border-purple w-full"/>
         </div>
-         <input type="text" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
-         <input type="text" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
-         <input type="text" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
-         <textarea rows={4} type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
+         <input type="tel" name="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="text" name="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full"/>
+         <input type="email" name="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
+         <textarea rows={4} name="message" type="text" placeholder="Message..." className="mt-4 p-4 border border-purple w-full"/>
        </form>
 
        <button 
