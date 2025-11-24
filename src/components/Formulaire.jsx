@@ -1,14 +1,13 @@
 import { FaArrowRight } from "react-icons/fa";
 import { TbHandClick } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, ValidationError } from '@formspree/react';
 
 
 const Formulaire = () => {
 
 
-  const [result, setResult] = useState("");
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 });
   const [state, handleSubmit] = useForm("mkgagyna");
@@ -55,6 +54,20 @@ const Formulaire = () => {
     setChoix({ ...choix, modeles: newModeles });
   };
  
+   
+
+       useEffect(() => {
+    if (state.succeeded) {
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.location.reload(); // refresh page after 3s
+      }, 2000);
+
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [state.succeeded]);
+
+
 
   return (
 
@@ -242,8 +255,13 @@ const Formulaire = () => {
          {state.submitting ? "Envoi de Votre commande..." : "Je valide ma commande"}
         <TbHandClick className="size-8 text-white"/>
        </button>
+       
        </form>
- 
+  
+
+      {/* const [selectedOffer, setSelectedOffer] = useState(null);
+  const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 }); */}
+
 
 
       </div>
