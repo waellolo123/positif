@@ -78,7 +78,7 @@ const Formulaire = () => {
       {/*buttons  */}
 
       <div className="w-full p-5 max-sm:p-2  mt-5 flex flex-col justify-center items-center bg-slate-100">
-        {[1, 2, 3].map((n) => (
+        {/* {[1, 2, 3].map((n) => (
           <button
             key={n}
             className={`w-full p-5 max-sm:p-2  mt-5 flex items-center justify-center gap-3  font-semibold cursor-pointer ${
@@ -93,23 +93,91 @@ const Formulaire = () => {
               </span>
             <TbHandClick className="size-8"/>
           </button>
-        ))}
+        ))} */}
         
+
+        {[1, 2, 3].map((n) => (
+  <div key={n} className="w-full">
+    {/* Bouton */}
+    <button
+      className={`w-full p-5 mt-5 flex items-center justify-center gap-3 font-semibold cursor-pointer ${
+        selectedOffer === n
+          ? "bg-white border border-purple text-purple text-2xl animate-pulse"
+          : "bg-gradient-to-r from-purple to-saumon text-white"
+      }`}
+      onClick={() => handleSelect(n)}
+    >
+      {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt
+      {n === 3 && (
+        <span className="animate-bounce text-amber-500 flex items-center gap-2">
+          <TbTruckDelivery className="size-6 text-amber-500" />
+          Livraison gratuite
+        </span>
+      )}
+      <TbHandClick className="size-8" />
+    </button>
+
+    {/* Bloc animé */}
+    <div
+      className={`transition-all duration-500 ease-in-out overflow-hidden ${
+        selectedOffer === n ? "max-h-screen opacity-100 mt-6" : "max-h-0 opacity-0"
+      }`}
+    >
+      {[...Array(selectedOffer === n ? n : 0)].map((_, i) => (
+        <div key={i} className="border border-purple p-4 rounded bg-gray-50 mb-4">
+          <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
+
+          {/* Taille */}
+          <select
+            className="border p-2 rounded w-48 mb-2 bg-purple text-white"
+            value={choix.tailles[i] || ""}
+            onChange={(e) => updateTaille(i, e.target.value)}
+          >
+            <option value="">Choisir une taille</option>
+            {tailles.map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+
+          {/* Modèles en images */}
+          <div className="flex space-x-2 overflow-x-auto">
+            {modeles.map((m) => (
+              <button
+                key={m.id}
+                type="button"
+                onClick={() => updateModele(i, m.name)}
+                className={`border border-purple rounded p-1 ${
+                  choix.modeles[i] === m.name ? "ring-2 ring-amber-500" : ""
+                }`}
+              >
+                <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
+                <p className="text-xs font-medium text-center text-purple">{m.name}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+))} 
+
       </div>
 
 
 
-
-
       
+
+
+
+
       {/* Sélections dynamiques */}
-      {selectedOffer && (
+      {/* {selectedOffer && (
         <div className="space-y-4 mt-10">
           {[...Array(selectedOffer)].map((_, i) => (
             <div key={i} className="border border-purple p-4 rounded bg-gray-50">
               <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
 
-              {/* Taille */}
+             
               <select
                 className="border p-2 rounded w-48 mb-2 bg-purple text-white"
                 onChange={(e) => updateTaille(i, e.target.value)}
@@ -120,14 +188,14 @@ const Formulaire = () => {
                 ))}
               </select>
 
-              {/* Modèles en images */}
+              
               <div className="flex space-x-2 overflow-x-auto">
                 {modeles.map((m) => (
                   <button
                     key={m.id}
                     onClick={() => updateModele(i, m.name)}
                     className={`border border-purple rounded p-1 ${
-                      choix.modeles[i] === m.name ? "ring-2 ring-amber-500" : ""
+                      choix.modeles[i] === m.name ? "ring-3 ring-amber-500" : ""
                     }`}
                   >
                     <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
@@ -138,62 +206,12 @@ const Formulaire = () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
 
-
-      
-      {/* <div className="p-5 max-sm:p-2  mt-5 flex items-center justify-around bg-gradient-to-r from-purple to-saumon cursor-pointer">
-        <div className="flex gap-4 items-center">
-        <span className="text-white text-xl max-sm:text-sm font-bold">1 Pièce</span>
-        <FaArrowRight className="size-6 text-amber-500"/>
-        <span className="text-white text-xl max-sm:text-sm font-bold">29, 900dt</span>
-        </div>
-        <span className="text-amber-500 font-semibold text-xl max-sm:text-sm">+7 dt de livraison</span>
-        <TbHandClick className="size-8 text-white"/>
-      </div> */}
-
-
-      {/* <div className="p-5 max-sm:p-2 mt-5 flex items-center justify-around bg-gradient-to-r from-purple to-saumon cursor-pointer">
-        <div className="flex gap-4 items-center">
-        <span className="text-white text-xl max-sm:text-sm font-bold">2 Pièces</span>
-        <FaArrowRight className="size-6 text-amber-500"/>
-        <span className="text-white text-xl max-sm:text-sm font-bold">55, 900dt</span>
-        </div>
-        <span className="text-amber-500 font-semibold text-xl max-sm:text-sm">+7 dt de livraison</span>
-        <TbHandClick className="size-8 text-white"/>
-      </div> */}
-
-{/* 
-      <div className="p-5 max-sm:p-2 mt-5 flex items-center justify-around bg-white border border-purple cursor-pointer">
-        <div className="flex gap-4 items-center">
-        <span className="text-purple text-xl max-sm:text-sm font-bold border-b-4 border-amber-500">3 Pièces</span>
-        <FaArrowRight className="size-6 text-amber-500"/>
-         <span className="text-purple text-xl max-sm:text-sm font-bold">55, 900dt</span>
-        </div>
-
-
-        <div className="flex flex-col items-center">
-          <div className="flex items-center gap-2">
-           <TbTruckDelivery className="size-6 max-sm:size-4 text-purple"/>
-           <span className="text-purple max-sm:text-xs">Livraison Gratuite</span>
-          </div>
-          <div className="px-6 max-sm:px-1 py-1 border border-purple">
-            <p className="text-purple max-sm:text-xs">20% d'économies</p>
-          </div>
-        </div>
-       
-
-        <TbHandClick className="size-8 text-purple"/>
-      </div> */}
 
      {/* formulaire */}
       <div className="mt-10 p-5 border border-purple">
 
-
-
-
-
-  
 
 
 
@@ -219,7 +237,11 @@ const Formulaire = () => {
 
       {/* Formulaire récapitulatif */}
 
-        <p className="text-red-700 bg-red-100 p-2 text-center font-medium">il faut que vous choizissez les tailles et les modèles</p> 
+        {(!choix.tailles.every(Boolean) || !choix.modeles.every(Boolean)) && (
+      <p className="text-red-600 font-semibold bg-red-100 text-center p-2">
+        ⚠️ Il faut que vous choisissiez les tailles et les modèles
+      </p>
+    )}
 
       {choix.quantite > 0 && (
         <div className="mt-2 p-4 border border-purple rounded bg-white shadow">
@@ -262,17 +284,9 @@ const Formulaire = () => {
        </button>
        
        </form>
-  
-
-      {/* const [selectedOffer, setSelectedOffer] = useState(null);
-  const [choix, setChoix] = useState({ quantite: 0, tailles: [], modeles: [], prix: 0 }); */}
-
-
 
       </div>
     
-
-
     </div>
   )
 }
