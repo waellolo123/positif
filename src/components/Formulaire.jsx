@@ -78,155 +78,79 @@ const Formulaire = () => {
       {/*buttons  */}
 
       <div className="w-full p-5 max-sm:p-2  mt-5 flex flex-col justify-center items-center bg-slate-100">
-        {/* {[1, 2, 3].map((n) => (
-          <button
-            key={n}
-            className={`w-full p-5 max-sm:p-2  mt-5 flex items-center justify-center gap-3  font-semibold cursor-pointer ${
-              selectedOffer === n ? "bg-white border border-purple text-purple text-2xl animate-pulse" : "bg-gradient-to-r from-purple to-saumon text-white"
-            }`}
-            onClick={() => handleSelect(n)}
-          >
-            {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt 
-            <span className="animate-bounce text-amber-500 flex items-center gap-2">
-            {n === 3 &&  <TbTruckDelivery className="size-6 text-amber-500"/>}
-              {n === 3 && "Livraison gratuite"}
-              </span>
-            <TbHandClick className="size-8"/>
-          </button>
-        ))} */}
         
 
         {[1, 2, 3].map((n) => (
-  <div key={n} className="w-full">
-    {/* Bouton */}
-    <button
-      className={`w-full p-5 mt-5 flex items-center justify-center gap-3 font-semibold cursor-pointer ${
-        selectedOffer === n
-          ? "bg-white border border-purple text-purple text-2xl animate-pulse"
-          : "bg-gradient-to-r from-purple to-saumon text-white"
-      }`}
-      onClick={() => handleSelect(n)}
-    >
-      {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt
-      {n === 3 && (
-        <span className="animate-bounce text-amber-500 flex items-center gap-2">
-          <TbTruckDelivery className="size-6 text-amber-500" />
-          Livraison gratuite
-        </span>
-      )}
-      <TbHandClick className="size-8" />
-    </button>
+          <div key={n} className="w-full">
+            {/* Bouton */}
+            <button
+              className={`w-full p-5 mt-5 flex items-center justify-center gap-3 font-semibold cursor-pointer ${
+                selectedOffer === n
+                  ? "bg-white border border-purple text-purple text-2xl animate-pulse"
+                  : "bg-gradient-to-r from-purple to-saumon text-white"
+              }`}
+              onClick={() => handleSelect(n)}
+            >
+              {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt
+              {n === 3 && (
+                <span className="animate-bounce text-amber-500 flex items-center gap-2">
+                  <TbTruckDelivery className="size-6 text-amber-500" />
+                  Livraison gratuite
+                </span>
+              )}
+              <TbHandClick className="size-8" />
+            </button>
 
-    {/* Bloc animé */}
-    <div
-      className={`transition-all duration-500 ease-in-out overflow-hidden ${
-        selectedOffer === n ? "max-h-screen opacity-100 mt-6" : "max-h-0 opacity-0"
-      }`}
-    >
-      {[...Array(selectedOffer === n ? n : 0)].map((_, i) => (
-        <div key={i} className="border border-purple p-4 rounded bg-gray-50 mb-4">
-          <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
+            {/* Bloc animé */}
+            <div
+              className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                selectedOffer === n ? "max-h-screen opacity-100 mt-6" : "max-h-0 opacity-0"
+              }`}
+            >
+              {[...Array(selectedOffer === n ? n : 0)].map((_, i) => (
+                <div key={i} className="border border-purple p-4 rounded bg-gray-50 mb-4">
+                  <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
 
-          {/* Taille */}
-          <select
-            className="border p-2 rounded w-48 mb-2 bg-purple text-white"
-            value={choix.tailles[i] || ""}
-            onChange={(e) => updateTaille(i, e.target.value)}
-          >
-            <option value="">Choisir une taille</option>
-            {tailles.map((t) => (
-              <option key={t} value={t}>{t}</option>
-            ))}
-          </select>
+                  {/* Taille */}
+                  <select
+                    className="border p-2 rounded w-48 mb-2 bg-purple text-white"
+                    value={choix.tailles[i] || ""}
+                    onChange={(e) => updateTaille(i, e.target.value)}
+                  >
+                    <option value="">Choisir une taille</option>
+                    {tailles.map((t) => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
 
-          {/* Modèles en images */}
-          <div className="flex space-x-2 overflow-x-auto">
-            {modeles.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => updateModele(i, m.name)}
-                className={`border border-purple rounded p-1 ${
-                  choix.modeles[i] === m.name ? "ring-2 ring-amber-500" : ""
-                }`}
-              >
-                <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
-                <p className="text-xs font-medium text-center text-purple">{m.name}</p>
-              </button>
-            ))}
+                  {/* Modèles en images */}
+                  <div className="flex space-x-2 overflow-x-auto">
+                    {modeles.map((m) => (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => updateModele(i, m.name)}
+                        className={`border border-purple rounded p-1 ${
+                          choix.modeles[i] === m.name ? "ring-2 ring-amber-500" : ""
+                        }`}
+                      >
+                        <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
+                        <p className="text-xs font-medium text-center text-purple">{m.name}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </div>
-))} 
+        ))} 
 
       </div>
-
-
-
-      
-
-
-
-
-      {/* Sélections dynamiques */}
-      {/* {selectedOffer && (
-        <div className="space-y-4 mt-10">
-          {[...Array(selectedOffer)].map((_, i) => (
-            <div key={i} className="border border-purple p-4 rounded bg-gray-50">
-              <h3 className="font-semibold mb-2 text-purple">Pièce {i + 1}</h3>
-
-             
-              <select
-                className="border p-2 rounded w-48 mb-2 bg-purple text-white"
-                onChange={(e) => updateTaille(i, e.target.value)}
-              >
-                <option value="" className="text-white">Choisir une taille</option>
-                {tailles.map((t) => (
-                  <option className="text-white" key={t} value={t}>{t}</option>
-                ))}
-              </select>
-
-              
-              <div className="flex space-x-2 overflow-x-auto">
-                {modeles.map((m) => (
-                  <button
-                    key={m.id}
-                    onClick={() => updateModele(i, m.name)}
-                    className={`border border-purple rounded p-1 ${
-                      choix.modeles[i] === m.name ? "ring-3 ring-amber-500" : ""
-                    }`}
-                  >
-                    <img src={m.img} alt={m.name} className="w-16 h-16 object-cover rounded" />
-                    <p className="text-xs font-medium text-center text-purple">{m.name}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )} */}
 
 
      {/* formulaire */}
       <div className="mt-10 p-5 border border-purple">
 
-
-
-
-      {/* section prix */}
-      {/* <div className="">
-       <div className="flex items-center justify-between">
-        <span className="text-lg text-purple font-semibold">Quantité: 2</span>
-        <span className="text-lg text-purple font-semibold">55.900 dt</span>
-       </div>
-       <hr className="my-3 border-purple"/>
-        <div className="flex items-center justify-between">
-        <span className="text-lg text-purple font-semibold">Livraison</span>
-        <span className="text-lg text-purple font-semibold">7.000 dt</span>
-       </div>
-      </div> */}
 
       {/* section formulaire */}
        <form 

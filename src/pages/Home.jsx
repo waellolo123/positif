@@ -6,6 +6,7 @@ import child1 from "../assets/child1.jpeg";
 import child2 from "../assets/child2.jpeg";
 import child3 from "../assets/child3.jpeg";
 import child4 from "../assets/child4.jpeg";
+import TableMeasure from "../components/TableMeasure";
 
 
 
@@ -36,7 +37,8 @@ const Home = () => {
        <img src={child3} alt="" className="w-[300px] h-[400px] object-cover"/> 
       </div>
      </div>
-
+     {/* section 4 */}
+     <TableMeasure />
     </div>
   )
 }
