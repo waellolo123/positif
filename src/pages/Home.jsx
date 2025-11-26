@@ -25,6 +25,8 @@ const Home = () => {
      </div>
      
      {/* section 3 */}
+     <TableMeasure />
+     {/* section 4 */}
      <div className="">
       <Text title={"Confortables et Pratiques"} subtitle={"toute une gamme de qualité supérieure"}/>
       <p className="mt-2 text-gray w-[80%] max-sm:w-full">
@@ -37,8 +39,6 @@ const Home = () => {
        <img src={child3} alt="" className="w-[300px] h-[400px] object-cover"/> 
       </div>
      </div>
-     {/* section 4 */}
-     <TableMeasure />
     </div>
   )
 }

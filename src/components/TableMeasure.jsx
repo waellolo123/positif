@@ -15,8 +15,8 @@ const TableMeasure = () => {
       </div>
       {/* section images */}
       <div className="flex-1 flex flex-col items-center justify-center gap-4">
-       <img src={capuche} alt="" className="w-[400px]"/>
-       <img src={pantalon} alt="" className="w-[400px]"/>
+       <img src={capuche} alt="" className="w-[500px] max-sm:w-[400px] "/>
+       <img src={pantalon} alt="" className="w-[500px] max-sm:w-[400px] "/>
       </div>
       </div>
     </div>
