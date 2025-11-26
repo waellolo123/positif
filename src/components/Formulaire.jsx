@@ -86,14 +86,14 @@ const Formulaire = () => {
             <button
               className={`w-full p-5 mt-5 flex items-center justify-center gap-3 font-semibold cursor-pointer ${
                 selectedOffer === n
-                  ? "bg-white border border-purple text-purple text-2xl animate-pulse"
+                  ? "bg-white border border-purple text-purple text-2xl animate-pulse max-sm:text-lg"
                   : "bg-gradient-to-r from-purple to-saumon text-white"
               }`}
               onClick={() => handleSelect(n)}
             >
               {offres[n].label} ➔ {offres[n].prix.toFixed(3)} dt
               {n === 3 && (
-                <span className="animate-bounce text-amber-500 flex items-center gap-2">
+                <span className="animate-bounce text-amber-500 flex items-center gap-2 max-sm:gap-1 max-sm:text-xs">
                   <TbTruckDelivery className="size-6 text-amber-500" />
                   Livraison gratuite
                 </span>
