@@ -72,12 +72,12 @@ const Formulaire = () => {
   return (
 
     <div className="flex-1">
-     <p className="text-amber-500 font-semibold">Choisissez la formule qui vout convient si dessous</p>
 
 
       {/*buttons  */}
 
-      <div className="w-full p-5 max-sm:p-2  mt-5 flex flex-col justify-center items-center bg-slate-100">
+      <div className="w-full p-5 max-sm:p-2 flex flex-col justify-center items-center bg-slate-100">
+     <p className="text-saumon font-semibold">Choisissez la formule qui vout convient si dessous</p>
         
 
         {[1, 2, 3].map((n) => (
@@ -87,7 +87,7 @@ const Formulaire = () => {
               className={`w-full p-5 mt-5 flex items-center justify-center gap-3 font-semibold cursor-pointer ${
                 selectedOffer === n
                   ? "bg-white border border-purple text-purple text-2xl animate-pulse max-sm:text-lg"
-                  : "bg-gradient-to-r from-purple to-saumon text-white"
+                  : "bg-gradient-to-r from-purple to-saumon text-white text-lg"
               }`}
               onClick={() => handleSelect(n)}
             >
