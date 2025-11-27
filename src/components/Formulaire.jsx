@@ -192,7 +192,20 @@ const Formulaire = () => {
          <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full" required/>
          <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full" required/>
         </div>
-         <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full" required/>
+         {/* <input type="tel" name="tel" id="tel" placeholder="Numéro de Tel" className="mt-4 p-4 border border-purple w-full" required/> */}
+         <input 
+          type="tel" 
+          name="tel" 
+          id="tel" 
+          placeholder="Numéro de Tel" 
+          className="mt-4 p-4 border border-purple w-full" 
+          pattern="^(?:\\+216|00216)?[0-9]{8}$" 
+          title="Veuillez entrer un numéro tunisien valide (8 chiffres, avec ou sans indicatif +216)" 
+          required
+        />
+
+
+
          <input type="text" name="addresse" id="addresse" placeholder="Addresse de livraison" className="mt-4 p-4 border border-purple w-full" required/>
          <input type="email" name="email" id="email" placeholder="Email (optionnel)" className="mt-4 p-4 border border-purple w-full"/>
 
