@@ -171,7 +171,7 @@ const Formulaire = () => {
         <div className="mt-2 p-4 border border-purple rounded bg-white shadow">
           <h2 className="font-bold mb-4 text-purple">Récapitulatif de commande</h2>
           <p className="text-purple font-medium"><strong className="text-slate-700">Quantité :</strong> {choix.quantite}</p>
-          <p className="text-purple font-medium"><strong className="text-slate-700">Prix total :</strong> {choix.prix.toFixed(3)} dt {choix.prix === 79.900 ? "Livraison gratuite" : "+ 7dt livraison"}</p>
+          <p className="text-purple font-medium"><strong className="text-slate-700">Prix total :</strong> {choix.prix.toFixed(3)} dt {choix.prix === 79.900 ? "Livraison gratuite" : "+ 7dt livraison"} = <span className="text-purple text-xl font-bold bg-amber-500">{(choix.prix + 7).toFixed(3)}</span> dt</p>
           <div className="mt-2 space-y-2">
             {choix.tailles.map((t, i) => (
               <div key={i}>
@@ -185,9 +185,30 @@ const Formulaire = () => {
 
         <div className="mt-10 flex items-center justify-between gap-4">
 
-          <input type="hidden" name="Résumé de commande" value="2 pièces, 57.900 dt + 7dt livraison"  required/>
+          {/* <input type="hidden" name="Résumé de commande" value="2 pièces, 57.900 dt + 7dt livraison"  required/>
           <input type="hidden" name="Pièce 1" value="Taille : non choisie, Modèle : non choisi"  required/>
-          <input type="hidden" name="Pièce 2" value="Taille : non choisie, Modèle : non choisi"  required/>
+          <input type="hidden" name="Pièce 2" value="Taille : non choisie, Modèle : non choisi"  required/> */}
+
+         {/* Résumé dynamique */}
+          <input
+            type="hidden"
+            name="Résumé de commande"
+            value={`${choix.quantite} pièces, ${choix.prix.toFixed(3)} dt ${choix.prix === 79.9 ? "Livraison gratuite" : "+ 7dt livraison"}`}
+          />
+
+          {/* Détails par pièce */}
+          {choix.tailles.map((t, i) => (
+            <input
+              key={i}
+              type="hidden"
+              name={`Pièce ${i + 1}`}
+              value={`Taille : ${t || "non choisie"}, Modèle : ${choix.modeles[i] || "non choisi"}`}
+            />
+          ))}
+
+
+
+
 
          <input type="text" name="nom" id="nom" placeholder="Nom" className="p-4 border border-purple w-full" required/>
          <input type="text" name="prenom" id="prenom" placeholder="Prénom" className="p-4 border border-purple w-full" required/>
@@ -213,13 +234,26 @@ const Formulaire = () => {
          {state.succeeded && (
            <p className="text-xs mt-2 text-center text-green-700 bg-green-100 py-2">Merci pour votre confiance! on vous contactera pour confirmer votre commande</p>
           )}
-       <button 
+       {/* <button 
        type="submit"
        className="p-5 w-full max-sm:p-2 mt-5 flex items-center justify-center gap-4 bg-gradient-to-r from-purple to-saumon cursor-pointer text-white text-center text-lg font-semibold">
          {state.submitting ? "Envoi de Votre commande..." : "Je valide ma commande"}
         <TbHandClick className="size-8 text-white"/>
-       </button>
-       
+       </button> */}
+
+              <button 
+          type="submit"
+          disabled={!choix.tailles.every(Boolean) || !choix.modeles.every(Boolean)}
+          className={`p-5 w-full mt-5 flex items-center justify-center gap-4 
+            ${(!choix.tailles.every(Boolean) || !choix.modeles.every(Boolean)) 
+              ? "bg-gray-400 cursor-not-allowed" 
+              : "bg-gradient-to-r from-purple to-saumon cursor-pointer"} 
+            text-white text-lg font-semibold`}
+        >
+          {state.submitting ? "Envoi de Votre commande..." : "Je valide ma commande"}
+          <TbHandClick className="size-8 text-white"/>
+        </button>
+              
        </form>
 
       </div>
